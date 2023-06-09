@@ -1,0 +1,18 @@
+@page "/noticias"
+@inject HttpClient Http
+@inject DatabaseService DatabaseService
+
+<ListPage Title="Noticias" LoadDataAsync="async () => noticias = await DatabaseService.From<Noticia>()">
+    <DxGrid Data="@noticias"
+                    CssClass="mw-1100">
+            <Columns>
+                <DxGridDataColumn Caption="Titulo" FieldName="Titulo" />
+                <DxGridDataColumn Caption="Resumen" FieldName="Resumen" />
+            </Columns>
+        </DxGrid>
+</ListPage>
+
+
+@code {
+    private IReadOnlyList<Noticia> noticias;
+}

@@ -1,0 +1,18 @@
+﻿@page "/banners"
+@inject HttpClient Http
+@inject DatabaseService DatabaseService
+
+<ListPage Title="Banners Promocionales" LoadDataAsync="async () => banners = await DatabaseService.From<Banner>()">
+    <DxGrid Data="@banners"
+                    CssClass="mw-1100">
+            <Columns>
+                <DxGridDataColumn Caption="Orden" FieldName="Orden" />
+                <DxGridDataColumn Caption="Imagen Url" FieldName="ImagenUrl" />
+            </Columns>
+        </DxGrid>
+</ListPage>
+
+
+@code {
+    private IReadOnlyList<Banner> banners;
+}

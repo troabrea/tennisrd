@@ -1,0 +1,18 @@
+@page "/clubes"
+@inject HttpClient Http
+@inject DatabaseService DatabaseService
+
+<ListPage Title="Clubes" LoadDataAsync="async () => clubes = await DatabaseService.From<Club>()">
+    <DxGrid Data="@clubes"
+                    CssClass="mw-1100">
+            <Columns>
+                <DxGridDataColumn Caption="Nombre" FieldName="Nombre" />
+                <DxGridDataColumn Caption="Direccion" FieldName="Direccion" />
+            </Columns>
+        </DxGrid>
+</ListPage>
+
+
+@code {
+    private IReadOnlyList<Club> clubes;
+}

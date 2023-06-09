@@ -1,0 +1,33 @@
+﻿<div class="sidebar @StateCssClass">
+<DxTreeView AllowSelectNodes="true" CssClass="app-sidebar">
+    <Nodes>
+        <DxTreeViewNode NavigateUrl="./" Text="Overview"></DxTreeViewNode>
+        <DxTreeViewNode Text="Contenido">
+            <Nodes>
+                <DxTreeViewNode NavigateUrl="noticias" Text="Noticias"></DxTreeViewNode>        
+                <DxTreeViewNode NavigateUrl="banners" Text="Banners"></DxTreeViewNode>
+                <DxTreeViewNode NavigateUrl="clubes" Text="Clubes"></DxTreeViewNode>
+                <DxTreeViewNode NavigateUrl="catalogo" Text="Tienda"></DxTreeViewNode>
+            </Nodes>
+        </DxTreeViewNode>
+        <DxTreeViewNode Text="Tour">
+            <Nodes>
+                <DxTreeViewNode NavigateUrl="banners" Text="Calendario"></DxTreeViewNode>
+                <DxTreeViewNode NavigateUrl="banners" Text="Resultados"></DxTreeViewNode>
+                <DxTreeViewNode NavigateUrl="torneos" Text="Torneos"></DxTreeViewNode>
+                <DxTreeViewNode NavigateUrl="eventos" Text="Eventos"></DxTreeViewNode>
+            </Nodes>
+        </DxTreeViewNode>
+        <DxTreeViewNode Text="Jugadores">
+            <Nodes>
+                <DxTreeViewNode NavigateUrl="banners" Text="Jugadores"></DxTreeViewNode>        
+                <DxTreeViewNode NavigateUrl="banners" Text="Equipos"></DxTreeViewNode>
+            </Nodes>
+        </DxTreeViewNode>
+    </Nodes>
+</DxTreeView>
+</div>
+
+@code {
+    [Parameter] public string? StateCssClass { get; set; }
+}

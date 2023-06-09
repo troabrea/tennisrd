@@ -1,0 +1,23 @@
+@page "/torneos"
+@inject DatabaseService DatabaseService
+
+<ListPage Title="Toneos" LoadDataAsync="async () => torneos = await DatabaseService.From<TorneoView>()">
+    <ChildContent>
+        <DxGrid Data="@torneos"
+                CssClass="mw-1100">
+            <Columns>
+                <DxGridDataColumn Caption="Evento" FieldName="NombreEvento" GroupIndex="0"/>
+                <DxGridDataColumn Caption="Titulo" FieldName="Titulo"/>
+                <DxGridDataColumn Caption="Desde" FieldName="Desde"/>
+                <DxGridDataColumn Caption="Hasta" FieldName="Hasta"/>
+            </Columns>
+        </DxGrid>
+    </ChildContent>
+</ListPage>
+
+
+@code {
+    private IReadOnlyList<TorneoView> torneos;
+
+    
+}

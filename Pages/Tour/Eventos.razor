@@ -1,0 +1,28 @@
+@page "/eventos"
+@using Blazorise
+@inject DatabaseService DatabaseService
+
+<ListPage Title="Eventos" LoadDataAsync="async () => eventos = await DatabaseService.From<Evento>()">
+    <DxGrid Data="@eventos"
+                    CssClass="mw-1100">
+        <Columns>
+            <DxGridDataColumn Caption="Logo" Width="70" FieldName="LogoUrl">
+                <CellDisplayTemplate>
+                    @{
+                        var evento = (Evento) context.DataItem;
+                    }
+                    <Figure Size="FigureSize.Is64x64">
+                        <FigureImage Source="@evento.LogoUrl.AbsoluteUri"  />
+                    </Figure>
+                </CellDisplayTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Nombre" FieldName="Nombre"/>
+            <DxGridDataColumn Caption="Descripcion" FieldName="Descripcion"/>
+        </Columns>
+        </DxGrid>
+</ListPage>
+
+
+@code {
+    private IReadOnlyList<Evento> eventos;
+}

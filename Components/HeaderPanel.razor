@@ -1,0 +1,14 @@
+<div class="card p-2">
+    <DxToolbar Title="@Title" ItemRenderStyleMode="ToolbarRenderStyleMode.Plain" CollapseItemsToHamburgerMenu="true" Target="_blank">
+        <Items>
+            @MenuContent
+        </Items>
+    </DxToolbar>
+</div>
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter] public RenderFragment MenuContent { get; set; }
+}

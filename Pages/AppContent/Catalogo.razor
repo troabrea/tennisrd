@@ -1,0 +1,19 @@
+@page "/catalogo"
+@inject DatabaseService DatabaseService
+
+<ListPage Title="Catálogo de Productos" LoadDataAsync="async () => productos = await DatabaseService.From<CatalogoProducto>()">
+    <DxGrid Data="@productos"
+                    CssClass="mw-1100">
+            <Columns>
+                <DxGridDataColumn FieldName="NombreCategoria" GroupIndex="0" Caption="Categoría" />
+                <DxGridDataColumn Caption="Nombre" FieldName="Nombre" />
+                <DxGridDataColumn Caption="Precio" FieldName="Precio" />
+                <DxGridDataColumn FieldName="NombreSuplidor" Caption="Suplidor" />    
+            </Columns>
+        </DxGrid>
+</ListPage>
+
+
+@code {
+    private IReadOnlyList<CatalogoProducto> productos;
+}

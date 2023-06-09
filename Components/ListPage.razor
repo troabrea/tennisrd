@@ -1,0 +1,61 @@
+<HeaderPanel Title="@Title">
+        <MenuContent>
+    @if (MenuContent != null)
+    {
+            @MenuContent
+    }
+        </MenuContent>
+</HeaderPanel>
+<br/>
+@if (_isLoading)
+{
+    <Blazorise.Progress Value="100" Animated="true" Striped="true" />
+}
+else
+{
+    @ChildContent
+}
+@code 
+{
+    [Parameter]
+    public String? Title { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment? MenuContent { get; set; }
+    [Parameter]
+    public Func<Task> LoadDataAsync { get; set; }
+    
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadInitialData();
+        }
+        return Task.CompletedTask;
+    }
+
+    private bool _isLoading = false;
+    
+    private async void LoadInitialData()
+    {
+        if(_isLoading) return;
+        try
+        {
+            _isLoading = true;
+            StateHasChanged();
+            await LoadDataAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        finally
+        {
+            _isLoading=false;
+            StateHasChanged();
+        }
+
+    }
+
+}
